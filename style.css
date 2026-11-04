@@ -81,3 +81,17 @@ gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 20px; 
 }
+.notes h2 {
+    font-size: 30px;
+    color: var(--color);
+    align-items: center;
+}
+.notes textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border-color: var(--color);
+    resize: vertical;
+    outline: none;
+}
