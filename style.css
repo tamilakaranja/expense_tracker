@@ -36,3 +36,10 @@ h1 {
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
+
+.expense-input select {
+    padding: 12px;
+    border-radius: var(--border-radius);
+    font-size: 20px;
+    flex: 1;
+}
