@@ -12,15 +12,16 @@
 
 <!-- input expense tracker  -->
 <div class="expense-input"> 
-    <input type="text" placeholder="Expense description">
-    <input type="number" placeholder="Amount">
+    <input type="text" placeholder="Expense description" id="expense-description">
+    <button id="addexpensebtn">Add expense</button>
+    <input type="number" placeholder="Amount" id="amount">
     
    <select name="Select-category" id="Select-category">
         <option value="food">Food</option>
         <option value="clothes">Clothes</option>
         <option value="groceries">Groceries</option>
         <option value="rent">Rent</option>
-        <option value=" transport">Transport</option>
+        <option value="transport">Transport</option>
 
         
 </select>
@@ -29,7 +30,7 @@
 
 
 <!-- expense show plus filter  -->
-<div class="filter-list">
+<div class="expense-list">
     <h2>Your expenses</h2>
        <select name="filter-category" id="filter-category">
         <option value="food">Food</option>
@@ -50,7 +51,11 @@
 <p id="total-amount">0</p>
   </div>
 
-
+<!-- Notes section -->
+ <div class="notes">
+    <h2>Notes</h2>
+    <textarea name="text-area" id="text-area"></textarea>
+ </div>
  <script src="script.js"></script>
 </body>
 </html>
