@@ -43,3 +43,10 @@ h1 {
     font-size: 20px;
     flex: 1;
 }
+
+.expense-input button {
+     padding: 12px;
+    border-radius: var(--border-radius);
+    background-color: white;
+    border-color: var(--color);
+} 
