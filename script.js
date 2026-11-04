@@ -4,6 +4,7 @@ const inputexpense= document.getElementById ("expense-description");
 const categoryoptions = document.getElementById("Select-category");
 const totalamount= document.getElementById ("total-amount");
 const expenselist = document.getElementById("expense-list");
+const filterCategory = document.getElementById("filter-category");
 
 let expenses=[];
 
@@ -20,6 +21,7 @@ const expense = {
    
 };
 expenses.push(expense);
+
 // total amount 
 const total = expenses.reduce((sum,item) => { return sum + item.amount;},0);
 totalamount.textContent=total;
@@ -45,3 +47,24 @@ console.log(expenses);
 
 addexpensebtn.addEventListener("click",addExpense);
 
+// filter Category
+
+filterCategory.addEventListener("change", function() {
+
+    const selectedCategory = filterCategory.value;
+
+    const filteredExpenses = expenses.filter((expense) => {
+        return expense.category === selectedCategory;
+    });
+
+    expenselist.innerHTML = "";
+
+    filteredExpenses.forEach((expense) => {
+        const li = document.createElement("li");
+
+        li.textContent = `${expense.description} - KSh ${expense.amount} - ${expense.category}`;
+
+        expenselist.appendChild(li);
+    });
+
+});
