@@ -44,9 +44,40 @@ h1 {
     flex: 1;
 }
 
-.expense-input button {
+#add-expense-btn {
      padding: 12px;
     border-radius: var(--border-radius);
     background-color: white;
     border-color: var(--color);
 } 
+.expense-list {
+     background-color: white;
+    padding: 150px;
+    padding-bottom: 600px;
+    border-radius:var(--border-radius) ;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+.left-side {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.notes {
+      background-color: white;
+    padding: 100px;
+    padding-right: 20px;
+    border-radius:var(--border-radius) ;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px; 
+}
