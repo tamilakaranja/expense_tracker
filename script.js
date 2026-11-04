@@ -6,7 +6,7 @@ const totalamount= document.getElementById ("total-amount");
 const expenselist = document.getElementById("expense-list");
 const filterCategory = document.getElementById("filter-category");
 
-let expenses=[];
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
 
 function addExpense() {
@@ -21,6 +21,7 @@ const expense = {
    
 };
 expenses.push(expense);
+localStorage.setItem("expenses", JSON.stringify(expenses));
 
 // total amount 
 const total = expenses.reduce((sum,item) => { return sum + item.amount;},0);
@@ -28,9 +29,20 @@ totalamount.textContent=total;
 const li = document.createElement("li");
 const deleteBtn = document.createElement("button");
 deleteBtn. textContent = "Delete";
+deleteBtn.addEventListener("click", function() {
+    const index = expenses.indexOf(expense);
+
+    expenses.splice(index, 1);
+
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+
+    displayExpenses(expenses);
+    updateTotal();
+});
 deleteBtn.addEventListener("click",function(){
    const index= expenses.indexOf(expense);
    expenses.splice(index,1);
+   localStorage.setItem("expenses", JSON.stringify(expenses));
    console.log (index)
    li.remove();
    const total = expenses.reduce((sum, item) => {
@@ -64,7 +76,49 @@ filterCategory.addEventListener("change", function() {
 
         li.textContent = `${expense.description} - KSh ${expense.amount} - ${expense.category}`;
 
+
         expenselist.appendChild(li);
     });
 
 });
+
+
+function displayExpenses(expensesToDisplay) {
+    expenselist.innerHTML = "";
+
+    expensesToDisplay.forEach((expense) => {
+        const li = document.createElement("li");
+
+        li.textContent = `${expense.description} - KSh ${expense.amount} - ${expense.category}`;
+        const deleteBtn = document.createElement("button");
+deleteBtn.textContent = "Delete";
+
+deleteBtn.addEventListener("click", function() {
+    const index = expenses.indexOf(expense);
+
+    expenses.splice(index, 1);
+
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+
+    displayExpenses(expenses);
+    updateTotal();
+});
+
+        expenselist.appendChild(li);
+    });
+}
+
+displayExpenses(expenses);
+const savedTotal = expenses.reduce((sum, item) => {
+    return sum + item.amount;
+}, 0);
+
+totalamount.textContent = savedTotal;
+
+function updateTotal() {
+    const total = expenses.reduce((sum, item) => {
+        return sum + item.amount;
+    }, 0);
+
+    totalamount.textContent = total;
+}
