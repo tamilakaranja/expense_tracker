@@ -1,6 +1,6 @@
 :root {
  --background-color:#c4e5ff;
-  --color:#005291;
+  --color:#033d69;
   --small:80px;
    --large:100px;
    --xlarge:200px;
@@ -16,4 +16,10 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--background-color);
+}
+h1 {
+    text-align: center;
+    color: var(--color);
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
