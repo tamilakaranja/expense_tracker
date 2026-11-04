@@ -20,8 +20,25 @@ const expense = {
    
 };
 expenses.push(expense);
+// total amount 
+const total = expenses.reduce((sum,item) => { return sum + item.amount;},0);
+totalamount.textContent=total;
 const li = document.createElement("li");
+const deleteBtn = document.createElement("button");
+deleteBtn. textContent = "Delete";
+deleteBtn.addEventListener("click",function(){
+   const index= expenses.indexOf(expense);
+   expenses.splice(index,1);
+   console.log (index)
+   li.remove();
+   const total = expenses.reduce((sum, item) => {
+    return sum + item.amount;
+}, 0);
+
+totalamount.textContent = total;
+});
 li.textContent = `${description} - KSh ${expenseAmount} - ${category}`;
+li.appendChild (deleteBtn);
 expenselist.appendChild(li);
 console.log(expenses);
 };
